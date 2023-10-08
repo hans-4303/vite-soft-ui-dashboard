@@ -7,6 +7,7 @@
             class="text-sm text-center copyright text-muted"
             :class="$store.state.isRTL ? 'text-lg-end' : 'text-lg-start'"
           >
+            <!-- template 단 안에서 함수 호출, {{ 함수 }}로 작동한다 보임 -->
             ©
             {{ new Date().getFullYear() }}, made with
             <i class="fa fa-heart"></i> by
@@ -62,6 +63,7 @@
   </footer>
 </template>
 
+<!-- 컴포넌트 선언되는 스크립트 단 -->
 <script>
 export default {
   name: "AppFooter",
