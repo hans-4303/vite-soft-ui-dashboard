@@ -480,7 +480,9 @@
   </div>
 </template>
 
+<!-- 컴포넌트 정의 및 호출하는 script 단 -->
 <script>
+/* 컴포넌트 및 이미지 등 호출 */
 import VsudSwitch from "@/components/VsudSwitch.vue";
 import ProfileCard from "./components/ProfileCard.vue";
 import VsudAvatar from "../components/VsudAvatar.vue";
@@ -499,17 +501,22 @@ import team4 from "@/assets/img/team-4.jpg";
 import bgImg from "@/assets/img/curved-images/curved14.jpg"
 import ProjectsCard from "./components/ProjectOverviewCard.vue";
 
+/* setter 함수 호출 */
 import setNavPills from "@/assets/js/nav-pills.js";
 import setTooltip from "@/assets/js/tooltip.js";
 
+/* 상위 컴포넌트 정의 */
 export default {
+  /* 고유 이름 */
   name: "ProfileOverview",
+  /* 내부 호출 컴포넌트 */
   components: {
     VsudSwitch,
     ProfileCard,
     VsudAvatar,
     ProjectsCard,
   },
+  /* data, 전부 키로서 호출 가능 */
   data() {
     return {
       showMenu: false,
@@ -529,12 +536,16 @@ export default {
     };
   },
 
+  /* 마운트 시 호출
+  store === vuex 대입 및 함수 호출 */
   mounted() {
     this.$store.state.isAbsolute = true;
     this.$store.state.isNavFixed = false;
     setNavPills();
     setTooltip();
   },
+  /* 마운트 전 호출
+  store === vuex 대입, 먼저는 로직 문제 해결 위함인가? */
   beforeUnmount() {
     this.$store.state.isAbsolute = false;
   },

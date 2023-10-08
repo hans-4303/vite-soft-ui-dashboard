@@ -1,6 +1,9 @@
+/* 앱 전반 상태 관리를 vuex로 구성 */
 import { createStore } from "vuex";
 
+/* 반환하지 않고 createStore 자체를 내보냄 */
 export default createStore({
+  /* 전역 state */
   state: {
     hideConfigButton: false,
     isPinned: true,
@@ -16,6 +19,7 @@ export default createStore({
     showFooter: true,
     showMain: true,
   },
+  /* reducer 함수와 유사한 것으로 보임 */
   mutations: {
     toggleConfigurator(state) {
       state.showConfig = !state.showConfig;
@@ -49,6 +53,7 @@ export default createStore({
       }
     },
   },
+  /* 이것도 reducer와 비슷한가? 그렇다면 mutation과 action 차이를 알아내야 함 */
   actions: {
     toggleSidebarColor({ commit }, payload) {
       commit("sidebarType", payload);

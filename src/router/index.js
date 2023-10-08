@@ -8,6 +8,15 @@ import Rtl from "@/views/Rtl.vue";
 import SignIn from "@/views/SignIn.vue";
 import SignUp from "@/views/SignUp.vue";
 
+/* [
+  {
+    경로
+    이름
+    리디렉트
+    or
+    컴포넌트
+  }
+] */
 const routes = [
   {
     path: "/",
@@ -56,9 +65,13 @@ const routes = [
   },
 ];
 
+/* createRouter 함수 통한 router 반환 */
 const router = createRouter({
+  /* 탐색 기록? */
   history: createWebHashHistory(import.meta.env.BASE_URL),
+  /* routes 객체 */
   routes,
+  /* 링크 클래스에 Active를 두는지 */
   linkActiveClass: "active",
 });
 

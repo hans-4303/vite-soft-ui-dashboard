@@ -51,7 +51,9 @@
   </div>
 </template>
 
+<!-- 컴포넌트 호출 및 상위 컴포넌트 정의하는 script 단 -->
 <script>
+/* 컴포넌트 호출 */
 import setTooltip from "@/assets/js/tooltip.js";
 import NavPill from "./components/NavPill.vue";
 import MasterCard from "@/examples/Cards/MasterCard.vue";
@@ -61,8 +63,11 @@ import InvoiceCard from "./components/InvoiceCard.vue";
 import BillingCard from "./components/BillingCard.vue";
 import TransactionCard from "./components/TransactionCard.vue";
 
+/* 상위 컴포넌트 내보내기 */
 export default {
+  /* 이름 */
   name: "BillingPage",
+  /* 페이지 내부 사용될 컴포넌트 */
   components: {
     NavPill,
     MasterCard,
@@ -72,8 +77,12 @@ export default {
     BillingCard,
     TransactionCard,
   },
+  /* 현 vue 컴포넌트가 다룰 정보를 가진 prop
+  객체 | 함수 */
   data() {
+    /* 함수 형태로 리턴 */
     return {
+      /* 키 그대로 현 컴포넌트에서 쓰임: data().salary ... 와 같이 접근 X */
       salary: {
         classIcon: "text-white fas fa-landmark",
         title: "Salary",
@@ -88,6 +97,7 @@ export default {
       },
     };
   },
+  /* 마운트 된다면 setTooltip 메서드 호출 */
   mounted() {
     setTooltip();
   },

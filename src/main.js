@@ -9,18 +9,23 @@ Coded by www.creative-tim.com
 =========================================================
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/ 
+*/
 
-import { createApp } from 'vue'
-import App from './App.vue'
+/* react index.js와 유사한 것으로 보임 */
+
+// 앱 생성
+import { createApp } from "vue";
+// App 파일
+import App from "./App.vue";
+// 전역 store
 import store from "./store";
+// 앱 router
 import router from "./router";
+// CSS
 import "./assets/css/nucleo-icons.css";
 import "./assets/css/nucleo-svg.css";
+// JS 및 보조 CSS 호출
 import SoftUIDashboard from "./soft-ui-dashboard";
 
-createApp(App)
-    .use(store)
-    .use(router)
-    .use(SoftUIDashboard)
-    .mount('#app')
+/* 앱 생성과 사용 객체 혹은 파일들, 그리고 마운트할 #app === <div id=app>...</div> */
+createApp(App).use(store).use(router).use(SoftUIDashboard).mount("#app");

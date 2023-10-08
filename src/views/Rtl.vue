@@ -1086,29 +1086,43 @@
   </div>
 </template>
 
+<!-- 컴포넌트 호출 및 정의 위한 script 단 -->
 <script>
+/* 컴포넌트 호출 */
 import Card from "@/examples/Cards/Card.vue";
 import Chart from "chart.js/auto";
 import setTooltip from "@/assets/js/tooltip.js";
 
+/* 상위 컴포넌트 정의 */
 export default {
+  /* 고유 name */
   name: "RtlPage",
+  /* 호출할 하위 컴포넌트 */
   components: {
     Card,
   },
+  /* data 함수: 리턴 되는 키는 현 컴포넌트 대입 가능 */
   data() {
     return {
       iconBackground: "bg-gradient-success",
     };
   },
+  /* 마운트 됐을 때 */
   mounted() {
+    /* setTooltip 호출 */
     setTooltip();
 
+    /* #chart-bars canvas에 접근하여 getContext 메서드 호출: "2d" 인수 대입하여 객체로 다루기 */
     var ctx = document.getElementById("chart-bars").getContext("2d");
+    /* Chart 로직 호출, 첫 인수로 canvas 편집된 요소 넣고 두 번째 인수로 객체 선언하여 차트 정보 명시 */
     new Chart(ctx, {
+      /* 차트 종류 */
       type: "bar",
+      /* 차트 데이터 */
       data: {
+        /* 라벨을 문자열 배열로 */
         labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        /* datasets: 배열 안 객체 */
         datasets: [
           {
             label: "Sales",
@@ -1122,48 +1136,83 @@ export default {
           },
         ],
       },
+      /* 차트 옵션 */
       options: {
+        /* 반응형 */
         responsive: true,
+        /* 크기가 조정될 때 원본 캔버스의 방향 비율을 유지 */
         maintainAspectRatio: false,
+        /* 플러그인: 플러그인은 차트의 기본 동작을 변경하거나 사용자 지정하는 가장 효과적인 방법 */
         plugins: {
+          /* 단 여기에서는 legend 플러그인만 가리키고 display: false 값만 지정, 추가 함수 형태 아니므로 정적 동작 예상 */
           legend: {
             display: false,
           },
         },
+        /* 해당 차트에 대한 상호작용 */
         interaction: {
           intersect: false,
+          /* 동일한 인덱스에서 항목 찾음
+          동일한 인덱스에서 항목을 찾습니다. 교차 설정이 참이면 첫 번째 교차 항목이 데이터의 인덱스를 결정하는 데 사용됩니다.
+          거짓으로 교차하면 x 방향에서 가장 가까운 항목이 인덱스를 결정하는 데 사용됩니다. */
           mode: "index",
         },
+        /* 축?? y축과 x축?? */
         scales: {
+          /* y축 */
           y: {
+            /* grid 이하 선과 눈금 지정 할 수 있는 옵션 */
             grid: {
+              /* 테두리 그리기 */
               drawBorder: false,
+              /* 표시 */
               display: false,
+              /* 차트 영역 그리기 */
               drawOnChartArea: false,
+              /* 눈금 그리기 */
               drawTicks: false,
             },
+            /* 눈금 */
             ticks: {
+              /* 최소 단위 제안 */
               suggestedMin: 0,
+              /* 최대 단위 제안 */
               suggestedMax: 500,
+              /* 0부터 시작할지? */
               beginAtZero: true,
+              /* 패딩 */
               padding: 15,
+              /* 폰트 */
               font: {
+                /* 사이즈 */
                 size: 14,
+                /* 글꼴 */
                 family: "Open Sans",
+                /* 스타일 */
                 style: "normal",
+                /* 줄 간격 */
                 lineHeight: 2,
               },
+              /* 색상 */
               color: "#fff",
             },
           },
+          /* x축 */
           x: {
+            /* grid 이하 선과 눈금 지정 옵션 */
             grid: {
+              /* 테두리 그리기 */
               drawBorder: false,
+              /* 표시 */
               display: false,
+              /* 차트 영역 그리기 */
               drawOnChartArea: false,
+              /* 눈금 그리기 */
               drawTicks: false,
             },
+            /* 눈금 */
             ticks: {
+              /* 표시: 안함 */
               display: false,
             },
           },
@@ -1171,24 +1220,34 @@ export default {
       },
     });
 
+    /* #chart-line canvas 선택, getContext("2d") 호출하고 반환하여 캔버스 요소 다루기 */
     var ctx2 = document.getElementById("chart-line").getContext("2d");
 
+    /* ctx.createLinearGradient(수치) 메서드 호출하여 그라데이션 생성 후 반환하여 다룸 */
     var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
 
+    /* 색상 중단점 정의 */
     gradientStroke1.addColorStop(1, "rgba(203,12,159,0.2)");
     gradientStroke1.addColorStop(0.2, "rgba(72,72,176,0.0)");
     gradientStroke1.addColorStop(0, "rgba(203,12,159,0)"); //purple colors
 
+    /* 같은 그라데이션 로직 및 색상 중단점 정의 */
     var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke2.addColorStop(1, "rgba(20,23,39,0.2)");
     gradientStroke2.addColorStop(0.2, "rgba(72,72,176,0.0)");
     gradientStroke2.addColorStop(0, "rgba(20,23,39,0)"); //purple colors
 
+    /* Chart 인스턴스 생성
+    첫 인수는 ctx2 canvas, 두 번째 인수는 차트 옵션 객체 */
     new Chart(ctx2, {
+      /* 타입: 선 */
       type: "line",
+      /* 차트 데이터 */
       data: {
+        /* 차트 라벨 */
         labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        /* 데이터 셋: 선이 두 개니까 배열 안에 객체 두 개 정의 */
         datasets: [
           {
             label: "Mobile apps",
@@ -1218,55 +1277,95 @@ export default {
           },
         ],
       },
+      /* 차트 옵션 */
       options: {
+        /* 반응형 */
         responsive: true,
+        /* 차트 비율 유지 */
         maintainAspectRatio: false,
+        /* 전체 플러그인: legend 플러그인만 지정해서 display 안함 */
         plugins: {
           legend: {
             display: false,
           },
         },
+        /* 상호작용 */
         interaction: {
+          /* 교차 설정 */
           intersect: false,
+          /* index */
           mode: "index",
         },
+        /* 축 옵션 */
         scales: {
+          /* y축 */
           y: {
+            /* grid 이하 선 및 눈금 지정 옵션 */
             grid: {
+              /* 테두리 그리기 X */
               drawBorder: false,
+              /* 화면 표시 O */
               display: true,
+              /* 차트 영역 그리기 O */
               drawOnChartArea: true,
+              /* 눈금 그리기 X */
               drawTicks: false,
+              /* 테두리 Dash?? */
               borderDash: [5, 5],
             },
+            /* 눈금 */
             ticks: {
+              /* 화면 표시 O */
               display: true,
+              /* 패딩 */
               padding: 10,
+              /* 색상 */
               color: "#b2b9bf",
+              /* 폰트 */
               font: {
+                /* 사이즈 */
                 size: 11,
+                /* 글꼴 */
                 family: "Open Sans",
+                /* 스타일 */
                 style: "normal",
+                /* 줄 간격 */
                 lineHeight: 2,
               },
             },
           },
+          /* x축 */
           x: {
+            /* grid 이하 선 및 눈금 옵션 */
             grid: {
+              /* 테두리 안 그림 */
               drawBorder: false,
+              /* 표시 X */
               display: false,
+              /* 차트 영역 그리기 X */
               drawOnChartArea: false,
+              /* 눈금 그리기 X */
               drawTicks: false,
+              /* 테두리 Dash?? */
               borderDash: [5, 5],
             },
+            /* 눈금 */
             ticks: {
+              /* 화면 표시 */
               display: true,
+              /* 색상 */
               color: "#b2b9bf",
+              /* 패딩 */
               padding: 20,
+              /* 폰트 */
               font: {
+                /* 사이즈 */
                 size: 11,
+                /* 글꼴 */
                 family: "Open Sans",
+                /* 스타일 */
                 style: "normal",
+                /* 줄 간격 */
                 lineHeight: 2,
               },
             },
@@ -1275,16 +1374,24 @@ export default {
       },
     });
   },
+  /* 마운트 되기 전 */
   beforeMount() {
+    /* store === vuex 접근하여 isRTL state 조작 */
     this.$store.state.isRTL = true;
+    /* 문서, html 자체 지정하여 언어 옵션 바꾸기, 글자 순서 오른쪽 -> 왼쪽으로 바꾸기 */
     document.querySelector("html").setAttribute("lang", "ar");
     document.querySelector("html").setAttribute("dir", "rtl");
+    /* #app, 렌더링 될 전체 classList에 접근하고 rtl 클래스 대입 */
     document.querySelector("#app").classList.add("rtl");
   },
+  /* 언마운트 되기 전 */
   beforeUnmount() {
+    /* store === vuex 접근하여 isRTL state 조작 */
     this.$store.state.isRTL = false;
+    /* 문서, html 자체 지정하여 언어 옵션 및 글자 순서 속성 삭제 */
     document.querySelector("html").removeAttribute("lang");
     document.querySelector("html").removeAttribute("dir");
+    /* #app, 렌더링 될 전체 classList 접근하고 rtl 클래스 없애기 */
     document.querySelector("#app").classList.remove("rtl");
   },
 };

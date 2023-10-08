@@ -150,7 +150,10 @@
     </div>
   </div>
 </template>
+
+<!-- 컴포넌트 호출 및 선언하는 script 단 -->
 <script>
+/* 컴포넌트 호출 */
 import Card from "@/examples/Cards/Card.vue";
 import ActiveUsersChart from "@/examples/Charts/ActiveUsersChart.vue";
 import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
@@ -161,8 +164,11 @@ import DE from "../assets/img/icons/flags/DE.png";
 import GB from "../assets/img/icons/flags/GB.png";
 import BR from "../assets/img/icons/flags/BR.png";
 
+/* 현재 상위 컴포넌트 정의 */
 export default {
+  /* 고유 name */
   name: "DashboardDefault",
+  /* 컴포넌트 내부에 호출될 자식 컴포넌트 명세 */
   components: {
     Card,
     ActiveUsersChart,
@@ -170,8 +176,12 @@ export default {
     ProjectsCard,
     OrdersCard,
   },
+  /* 컴포넌트 내부 사용될 data */
   data() {
     return {
+      /* 키 자체를 현 컴포넌트에서 부르면 됨:
+      stats.iconBackground...
+      sales.us.country... */
       stats: {
         iconBackground: "bg-gradient-success",
         money: {
