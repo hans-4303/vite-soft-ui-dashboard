@@ -136,61 +136,94 @@
   </div>
 </template>
 
+<!-- store === vuex 호출 및 컴포넌트 선언하는 스크립트 단 -->
 <script>
+/* mapMutation, mapActions 호출 */
 import { mapMutations, mapActions } from "vuex";
+/* 상위 컴포넌트 선언 */
 export default {
+  /* 고유 name */
   name: "ConfiguratorComponent",
+  /* props */
   props: {
+    /* [key: String]: {
+      type: Function | String | Number | Boolean... (추정)
+      default: () => { }, 함수 타입
+    } */
     toggle: {
       type: Function,
       default: () => { }
     },
   },
+  /* data, 함수 형이며 객체 리턴되어서 본 컴포넌트 사용 가능 */
   data() {
     return {
       fixedKey: "",
     };
   },
-
+  /* vue의 함수형 속성, 로직을 가지고 값을 계산 후 리턴하는 함수
+  반환 값은 파라미터 함수가 반환하는 값을 가지는 proxy 객체 일종
+  
+  종속 대상을 따라 저장(캐싱) 되는 특징을 가짐 == useEffect(() => {}, ["의존성"]) */
   computed: {
+    /* ifTransparent 로직, store === vuex 접근하여 state 반환 */
     ifTransparent() {
       return this.$store.state.isTransparent;
     },
+    /* sidenavResponsive 로직, this.sidenavTypeOnResize로 메서드 호출함 */
     sidenavResponsive() {
       return this.sidenavTypeOnResize;
     },
   },
+  /* 마운트 전 */
   beforeMount() {
+    /* store === vuex 접근하여 값 대입 */
     this.$store.state.isTransparent = "bg-transparent";
-    // Deactivate sidenav type buttons on resize and small screens
+    /* Deactivate sidenav type buttons on resize and small screens:
+    크기 조정 및 작은 화면에서 사이드나브 유형 버튼 비활성화 */
     window.addEventListener("resize", this.sidenavTypeOnResize);
     window.addEventListener("load", this.sidenavTypeOnResize);
-  }, methods: {
+  },
+  /* 메서드 정의, 조작될 때마다 처리 해야 하는 로직 */
+  methods: {
+    /* ...mapMutations, mapActions 모두 vuex와 메서드 명이 같으므로 배열 안에 문자열 나열 */
     ...mapMutations(["navbarMinimize", "sidebarType", "navbarFixed"]),
     ...mapActions(["toggleSidebarColor"]),
 
+    /* sidebarColor 조건으로 움직임, 기본 값 파라미터: "success" */
     sidebarColor(color = "success") {
+      /* 문서 전체 지정하고 #sidenav-main 호출하여 attr 설정 */
       document.querySelector("#sidenav-main").setAttribute("data-color", color);
+      /* store === vuex 접근하여 값 대입하기 */
       this.$store.state.mcolor = `card-background-mask-${color}`;
     },
 
+    /* sidebarType, 타입 파라미터 받아서 mapActions의 toggleSidebarColor를 호출하고 인수로 type 전달 */
     sidebarType(type) {
       this.toggleSidebarColor(type);
     },
 
+    /* @change == onChange로 호출되는 로직 */
     setNavbarFixed() {
+      /* 앱의 현재 route 이름이 Profile인 조건으로 store === vuex에 접근하여 state를 반대로 조작 */
       if (this.$route.name !== "Profile") {
         this.$store.state.isNavFixed = !this.$store.state.isNavFixed;
       }
     },
 
+    /* sidenavTypeOnResize: computed 안에서 호출됨 */
     sidenavTypeOnResize() {
+      /* #btn-transparent 호출 및 반환 */
       let transparent = document.querySelector("#btn-transparent");
+      /* #btn-white 호출 및 반환 */
       let white = document.querySelector("#btn-white");
+      /* window.innerWidth < 1200 조건 */
       if (window.innerWidth < 1200) {
+        /* 요소에 disabled 클래스 == css 추가 */
         transparent.classList.add("disabled");
         white.classList.add("disabled");
       } else {
+        /* 조건이 깨지면 클래스 == css 제거 */
         transparent.classList.remove("disabled");
         white.classList.remove("disabled");
       }
