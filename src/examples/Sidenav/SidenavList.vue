@@ -85,24 +85,36 @@
     >Upgrade to pro</a>
   </div>
 </template>
+
+<!-- 컴포넌트 호출 및 선언 스크립트 단 -->
 <script>
+/* 컴포넌트 호출 */
 import Icon from "@/components/Icon.vue";
 import SidenavCollapse from "./SidenavCollapse.vue";
 import SidenavCard from "./SidenavCard.vue";
 
+/* 상위 컴포넌트 선언 */
 export default {
+  /* 고유 name */
   name: "SidenavList",
+  /* 호출 컴포넌트 */
   components: {
     Icon,
     SidenavCollapse,
     SidenavCard,
   },
+  /* props */
   props: {
+    /* [key: String]: {
+      type: String | Number | Boolean | Function ...,
+      default: String | Number | Boolean | Function ...
+    } */
     cardBg: {
       type: String,
       default: ""
     },
   },
+  /* data, 함수 형이며 객체 리턴, 키는 컴포넌트에서 활용 가능 */
   data() {
     return {
       title: "Vite Soft UI Dashboard",
@@ -110,9 +122,12 @@ export default {
       isActive: "active",
     };
   },
+  /* method: 매번 호출 됨 */
   methods: {
     getRoute() {
+      /* this.$route.path를 /기준으로 나누기 */
       const routeArr = this.$route.path.split("/");
+      /* [1] 요소를 반환해서 현재 경로 반환 로직 */
       return routeArr[1];
     },
   },
