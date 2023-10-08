@@ -58,6 +58,7 @@
                   <span class="me-2 text-xs font-weight-bold">60%</span>
                   <div>
                     <!-- 본 컴포넌트에서 props로 color, variant, percentage 설정 -->
+                    <!-- data 혹은 props로 가능한지 시험하기 -->
                     <vsud-progress
                       color="info"
                       variant="gradient"
