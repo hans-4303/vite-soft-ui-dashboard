@@ -46,10 +46,16 @@
   </div>
 </template>
 
+<!-- 컴포넌트 호출 및 선언된 스크립트 단 -->
 <script>
+/* 컴포넌트 호출 */
 import bgImg from '@/assets/img/curved-images/curved1.jpg'
+
+/* 상위 컴포넌트 선언 */
 export default {
+  /* 고유 이름 */
   name: "CardPlayer",
+  /* 데이터, 함수 형이며 객체 리턴되어 키 활용 가능 */
   data() {
     return {
       bgImg

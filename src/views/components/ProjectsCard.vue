@@ -431,7 +431,9 @@
   </div>
 </template>
 
+<!-- 컴포넌트 및 함수, 이미지 호출하고 상위 컴포넌트 선언하는 스크립트 단 -->
 <script>
+/* 함수, 컴포넌트, 이미지 호출 */
 import setTooltip from "@/assets/js/tooltip.js";
 import VsudAvatar from "@/components/VsudAvatar.vue";
 import VsudProgress from "@/components/VsudProgress.vue";
@@ -457,12 +459,14 @@ import img19 from "../../assets/img/small-logos/logo-invision.svg";
 import img20 from "../../assets/img/team-1.jpg";
 import img21 from "../../assets/img/team-4.jpg";
 
+/* 상위 컴포넌트 선언 */
 export default {
   name: "ProjectsCard",
   components: {
     VsudAvatar,
     VsudProgress,
   },
+  /* 데이터 호출, 함수 형태로 객체 리턴하므로 현 컴포넌트에서 키 호출하면 사용 가능 */
   data() {
     return {
       img1,
@@ -488,6 +492,7 @@ export default {
       img21,
     };
   },
+  /* 마운트 되었을 시 setter 호출 */
   mounted() {
     setTooltip();
   },

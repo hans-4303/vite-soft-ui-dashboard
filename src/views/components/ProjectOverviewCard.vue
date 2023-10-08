@@ -56,9 +56,16 @@
   </div>
 </template>
 
+<!-- 컴포넌트 및 props 선언된 스크립트 단 -->
 <script>
 export default {
+  /* 고유 이름 */
   name: "ProjectsCard",
+  /* props 객체
+  [key: string]: {
+    type: String | Number | Boolean ...(추정)
+    default: String | Number | Boolean ...(추정)
+  } */
   props: {
     img: {
       type: String,

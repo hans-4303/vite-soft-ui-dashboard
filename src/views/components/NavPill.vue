@@ -45,12 +45,18 @@
   </div>
 </template>
 
+<!-- 함수 호출 및 컴포넌트 선언된 스크립트 단 -->
 <script>
+/* 함수 호출 */
 import setNavPills from "@/assets/js/nav-pills.js";
 
+/* 상위 컴포넌트 정의 */
 export default {
+  /* 고유 name */
   name: "NavPill",
+  /* 마운트 됐을 시 */
   mounted() {
+    /* setter 호출 */
     setNavPills();
   },
 };

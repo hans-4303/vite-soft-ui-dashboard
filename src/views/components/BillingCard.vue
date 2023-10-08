@@ -85,6 +85,7 @@
   </div>
 </template>
 
+<!-- 컴포넌트 선언만 된 스크립트 단 -->
 <script>
 export default {
   name: "BillingCard",

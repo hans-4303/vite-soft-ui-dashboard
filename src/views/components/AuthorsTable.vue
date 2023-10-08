@@ -215,7 +215,9 @@
   </div>
 </template>
 
+<!-- 컴포넌트 호출 및 정의하는 script 단 -->
 <script>
+/* 기초 컴포넌트 및 이미지 호출 */
 import VsudAvatar from "@/components/VsudAvatar.vue";
 import VsudBadge from "@/components/VsudBadge.vue";
 import img1 from "../../assets/img/team-2.jpg";
@@ -225,12 +227,16 @@ import img4 from "../../assets/img/team-3.jpg";
 import img5 from "../../assets/img/team-2.jpg";
 import img6 from "../../assets/img/team-4.jpg";
 
+/* 상위 컴포넌트 정의 */
 export default {
+  /* 고유 name */
   name: "AuthorsTable",
+  /* 호출 컴포넌트 */
   components: {
     VsudAvatar,
     VsudBadge,
   },
+  /* data, 함수 형이며 객체로 리턴되어 키를 현 컴포넌트가 사용 가능 */
   data() {
     return {
       img1,

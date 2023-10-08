@@ -56,16 +56,22 @@
   </div>
 </template>
 
+<!-- 컴포넌트 및 이미지 호출, 선언되는 스크립트 단 -->
 <script>
+/* 컴포넌트 및 이미지 호출 */
 import VsudButton from "@/components/VsudButton.vue";
 import img1 from "../../assets/img/logos/mastercard.png";
 import img2 from "../../assets/img/logos/visa.png";
 
+/* 상위 컴포넌트 선언 */
 export default {
+  /* 고유 name */
   name: "PaymentCard",
+  /* 호출 컴포넌트 */
   components: {
     VsudButton,
   },
+  /* 데이터, 함수 형태이며 객체로 리턴되고 키는 현 컴포넌트에서 사용 가능 */
   data() {
     return {
       img1,

@@ -6,6 +6,7 @@
           <h6 class="mb-0">Invoices</h6>
         </div>
         <div class="col-6 text-end">
+          <!-- props를 통해 색상, 사이즈, variant 정의됨 -->
           <vsud-button color="success" size="sm" variant="outline">View All</vsud-button>
         </div>
       </div>
@@ -85,11 +86,16 @@
   </div>
 </template>
 
+<!-- 컴포넌트 호출 및 선언 된 스크립트 단 -->
 <script>
+/* 컴포넌트 호출 */
 import VsudButton from "@/components/VsudButton.vue";
 
+/* 상위 컴포넌트 선언 */
 export default {
+  /* 고유 name */
   name: "InvoiceCard",
+  /* 호출 컴포넌트 */
   components: {
     VsudButton,
   },

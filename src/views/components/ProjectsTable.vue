@@ -57,6 +57,7 @@
                 <div class="d-flex align-items-center justify-content-center">
                   <span class="me-2 text-xs font-weight-bold">60%</span>
                   <div>
+                    <!-- 본 컴포넌트에서 props로 color, variant, percentage 설정 -->
                     <vsud-progress
                       color="info"
                       variant="gradient"
@@ -293,11 +294,16 @@
   </div>
 </template>
 
+<!-- 컴포넌트 호출 및 선언하는 스크립트 단 -->
 <script>
+/* 컴포넌트 호출 */
 import VsudProgress from "@/components/VsudProgress.vue";
 
+/* 상위 컴포넌트 선언 */
 export default {
+  /* 고유 name */
   name: "ProjectsTable",
+  /* 호출 컴포넌트 */
   components: {
     VsudProgress,
   },
