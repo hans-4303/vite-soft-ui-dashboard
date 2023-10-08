@@ -18,6 +18,8 @@
           class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
         >
           <div class="d-flex align-items-center">
+            <!-- button 컴포넌트, prop로 조작되고 있음
+            이 역시 data() 혹은 props로 가능한지 테스트 -->
             <vsud-button
               color="danger"
               variant="outline"
@@ -146,11 +148,16 @@
   </div>
 </template>
 
+<!-- 컴포넌트 호출 및 선언하는 스크립트 단 -->
 <script>
+/* 컴포넌트 호출 */
 import VsudButton from "@/components/VsudButton.vue";
 
+/* 상위 컴포넌트 선언 */
 export default {
+  /* 고유 name */
   name: "TransactionCard",
+  /* 호출 컴포넌트 */
   components: {
     VsudButton,
   },
