@@ -3,9 +3,7 @@
     <navbar
       :min-nav="navbarMinimize"
       :toggle="toggleConfigurator"
-      :class="
-        $store.state.isNavFixed ? $store.state.navbarFixed_class : ''
-      "
+      :class="$store.state.isNavFixed ? $store.state.navbarFixed_class : ''"
     />
   </div>
   <div
@@ -15,9 +13,15 @@
       backgroundSize: 'cover',
     }"
   >
-    <sidenav :custom_class="$store.state.mcolor" :class="isTransparent" class="fixed-start" />
+    <sidenav
+      :custom_class="$store.state.mcolor"
+      :class="isTransparent"
+      class="fixed-start"
+    />
     <main class="mt-1 main-content border-radius-lg">
-      <div class="section min-vh-85 position-relative transform-scale-0 transform-scale-md-7">
+      <div
+        class="section min-vh-85 position-relative transform-scale-0 transform-scale-md-7"
+      >
         <div class="container-fluid">
           <div class="pt-10 row">
             <div class="pt-5 text-center col-lg-1 col-md-1 pt-lg-0 ms-lg-5">
@@ -98,7 +102,9 @@
   <app-footer class="py-3 bg-white border-radius-lg" />
 </template>
 
+<!-- 컴포넌트 호출 및 선언하는 스크립트 단 -->
 <script>
+/* 컴포넌트 및 setter, 이미지 호출 */
 import Sidenav from "@/examples/Sidenav/index.vue";
 import AppFooter from "@/examples/Footer.vue";
 import Navbar from "@/examples/Navbars/Navbar.vue";
@@ -108,13 +114,19 @@ import CardToDo from "./components/CardToDo.vue";
 import CardPlayer from "./components/CardPlayer.vue";
 import CardMessage from "./components/CardMessage.vue";
 import setTooltip from "@/assets/js/tooltip.js";
-import bgImg from '@/assets/img/vr-bg.jpg';
+import bgImg from "@/assets/img/vr-bg.jpg";
+
+/* body 지정하여 [0]으로 접근하고 요소 반환 */
 const body = document.getElementsByTagName("body")[0];
 
+/* vuex에서 matMutations 호출 */
 import { mapMutations } from "vuex";
 
+/* 상위 컴포넌트 정의 */
 export default {
+  /* 고유 이름 */
   name: "VirtualReality",
+  /* 호출할 하위 컴포넌트 */
   components: {
     AppFooter,
     Sidenav,
@@ -125,41 +137,58 @@ export default {
     CardPlayer,
     CardMessage,
   },
+  /* 사용 데이터, 함수 형태, 객체가 리턴되어 키를 바로 사용 가능 */
   data() {
     return {
-      bgImg
-    }
+      bgImg,
+    };
   },
-
+  /* 표현식을 넣는 속성 */
   computed: {
+    /* isTransparent 함수? */
     isTransparent() {
+      /* 호출 시 store === vuex에 접근하여 state 조작됨 */
       return this.$store.state.isTransparent;
     },
   },
+  /* 마운트 되었을 시 툴팁 설정 함수 호출 */
   mounted() {
     setTooltip();
   },
+  /* 마운트 전 */
   beforeMount() {
+    /* store === vuex에 접근하여 state 설정 */
     this.$store.state.showNavbar = false;
     this.$store.state.showSidenav = false;
     this.$store.state.showFooter = false;
+    /* body.classList에 접근하여 클래스 == css 더하기 */
     body.classList.add("virtual-reality");
     this.$store.state.isTransparent = "bg-white";
   },
+  /* 언마운트 전 */
   beforeUnmount() {
+    /* store === vuex에 접근하여 state 설정 */
     this.$store.state.showNavbar = true;
     this.$store.state.showSidenav = true;
     this.$store.state.showFooter = true;
+    /* body.classList에 접근하여 클래스 == css 더하기 */
     body.classList.remove("virtual-reality");
 
+    /* store === vuex의 상태를 조건으로 접근함 */
     if (this.$store.state.isPinned === false) {
+      /* 지정 요소를 반환 */
       const sidenav_show = document.querySelector(".g-sidenav-show");
+      /* classList에 삭제 및 추가 */
       sidenav_show.classList.remove("g-sidenav-hidden");
       sidenav_show.classList.add("g-sidenav-pinned");
+      /* store === vuex의 상태를 조작 */
       this.$store.state.isPinned = true;
     }
+    /* store === vuex의 상태를 대입 */
     this.$store.state.isTransparent = "bg-transparent";
-  }, methods: {
+  },
+  /* methods 객체 생성하고 ...mapMutation 정의, 현 컴포넌트와 vuex 메소드 명이 같으므로 배열 안에 나열됨 */
+  methods: {
     ...mapMutations(["navbarMinimize", "toggleConfigurator"]),
   },
 };

@@ -68,17 +68,24 @@
   <app-footer />
 </template>
 
+<!-- 컴포넌트 호출 및 정의하는 script 단 -->
 <script>
+/* 컴포넌트 및 이미지 호출 */
 import Navbar from "@/examples/PageLayout/Navbar.vue";
 import AppFooter from "@/examples/PageLayout/Footer.vue";
 import VsudInput from "@/components/VsudInput.vue";
 import VsudSwitch from "@/components/VsudSwitch.vue";
 import VsudButton from "@/components/VsudButton.vue";
 import bgImg from "@/assets/img/curved-images/curved9.jpg"
+
+/* body 요소 호출하여 [0]에 접근하고 반환 */
 const body = document.getElementsByTagName("body")[0];
 
+/* 상위 컴포넌트 정의 */
 export default {
+  /* 고유 이름 */
   name: "SigninPage",
+  /* 호출할 컴포넌트 */
   components: {
     Navbar,
     AppFooter,
@@ -86,23 +93,31 @@ export default {
     VsudSwitch,
     VsudButton,
   },
+  /* 사용할 데이터: 함수 형식, 여기서는 data()가 아닌 리턴된 키를 그대로 다룰 수 있다 */
   data() {
+    /* ES6 문법으로 추정: bgImg: bgImg */
     return {
       bgImg
     }
   },
+  /* 마운트 되기 전 */
   beforeMount() {
+    /* store === vuex에 접근하여 state 조작 */
     this.$store.state.hideConfigButton = true;
     this.$store.state.showNavbar = false;
     this.$store.state.showSidenav = false;
     this.$store.state.showFooter = false;
+    /* body classList에 접근하여 지정 클래스 == css 삭제 */
     body.classList.remove("bg-gray-100");
   },
+  /* 언마운트 전 */
   beforeUnmount() {
+    /* store === vuex에 접근하여 state 조작 */
     this.$store.state.hideConfigButton = false;
     this.$store.state.showNavbar = true;
     this.$store.state.showSidenav = true;
     this.$store.state.showFooter = true;
+    /* body classList에 접근하여 지정 클래스 == css 추가 */
     body.classList.add("bg-gray-100");
   },
 };

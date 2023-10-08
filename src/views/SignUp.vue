@@ -129,15 +129,21 @@
   <app-footer />
 </template>
 
+<!-- 컴포넌트 선언 및 초기화 하는 스크립트 단 -->
 <script>
+/* 컴포넌트 및 이미지 호출 */
 import Navbar from "@/examples/PageLayout/Navbar.vue";
 import AppFooter from "@/examples/PageLayout/Footer.vue";
 import VsudInput from "@/components/VsudInput.vue";
 import VsudCheckbox from "@/components/VsudCheckbox.vue";
 import VsudButton from "@/components/VsudButton.vue";
 import bgImg from "@/assets/img/curved-images/curved6.jpg"
+
+/* 상위 컴포넌트 정의 */
 export default {
+  /* 고유 이름 */
   name: "SignUp",
+  /* 호출할 하위 컴포넌트 */
   components: {
     Navbar,
     AppFooter,
@@ -145,17 +151,32 @@ export default {
     VsudCheckbox,
     VsudButton,
   },
+  /* data(), 리턴된 키를 현 컴포넌트에서 호출 가능 */
   data() {
     return {
       bgImg
     }
   },
+  // "created !== mounted"
+  /* created
+  인스턴스 작성된 후 동기적으로 호출됨
+  부모 자식 관계 컴포넌트 렌더링 될 때 mounted보다 먼저 호출됨
+  부모 -> 자식 순으로 실행
+
+  데이터 초기화 선언을 created에서 많이 한다
+  가상 돔 조작 불가: ($el 속성 아직 사용 불가) */
+  /* mounted
+  부모 자식 관계 컴포넌트 렌더링 될 때 created 다음 호출되고 자식 -> 부모 순 실행
+  el이 새로 생성된 vm.$el로 대체된 인스턴스가 마운트 된 직후 호출 됨, 가상 돔 조작 가능
+  돔 조작 관련을 mounted 영역에 기술함. */
   created() {
     this.$store.state.hideConfigButton = true;
     this.$store.state.showNavbar = false;
     this.$store.state.showSidenav = false;
     this.$store.state.showFooter = false;
   },
+  /* 언마운트 되기 전
+  store === vuex에 접근하여 state 조작 */
   beforeUnmount() {
     this.$store.state.hideConfigButton = false;
     this.$store.state.showNavbar = true;
