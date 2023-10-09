@@ -18,17 +18,24 @@
   </div>
 </template>
 
+<!-- 컴포넌트 정의 하는 스크립트 단 -->
 <script>
 export default {
+  /* 고유 name */
   name: "VsudTextarea",
+  /* props 정의 */
   props: {
+    /* [key: string]: StringConstructor | ... | {
+      type: StringConstructor | ...;
+      default: string | ...;
+    } */
     id: {
       type: String,
-      default: ""
+      default: "",
     },
     placeholder: {
       type: String,
-      default: ""
+      default: "",
     },
   },
 };

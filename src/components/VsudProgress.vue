@@ -8,10 +8,18 @@
   </div>
 </template>
 
+<!-- 컴포넌트 정의 하는 스크립트 단 -->
 <script>
 export default {
+  /* 고유 name */
   name: "VsudProgress",
+  /* props 정의 */
   props: {
+    /* [key: string]: StringConstructor | ... | {
+      type: StringConstructor | ...;
+      default?: string | ...;
+      required?: boolean;
+    } */
     color: {
       type: String,
       default: "primary",
