@@ -1,4 +1,7 @@
 <template>
+  <!-- prop으로 움직이고 있음
+  v-if 혹은 :prop 바인딩으로 동작 -->
+
   <!-- dashboard - shop icon -->
   <svg
     v-if="name === 'dashboard'"
@@ -958,10 +961,19 @@
     </g>
   </svg>
 </template>
+
+<!-- 컴포넌트 정의 스크립트 단 -->
 <script>
 export default {
+  /* 고유 name */
   name: "IconComponent",
+  /* props 정의 */
   props: {
+    /* [key: string;]: StringConstructor | ... | {
+      type: StringConstructor | ...;
+      default?: string | ...;
+      required?: boolean;
+    } */
     name: {
       type: String,
       required: true,
