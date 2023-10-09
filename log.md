@@ -401,3 +401,16 @@ store === vuex, 컴포넌트 methods 이해:
 현 컴포넌트 메소드() {
 this.스토어 메소드("인수");
 }
+
+<slot />:
+부모 컴포넌트가 제공한 슬롯 컨텐츠(== 리액트의 children)가 렌더링 되어야 하는 위치를 나타내는 슬롯 아울렛(outlet)
+
+예, 부모 컴포넌트)
+<FancyButton>
+  클릭하기! <!-- 슬롯 컨텐츠 == 리액트의 children -->
+</FancyButton>
+
+예, 자식 컴포넌트)
+<button class="fancy-btn">
+  <slot></slot> <!-- 슬롯 아울렛, 여기에 슬롯 컨텐츠 출력 -->
+</button>
