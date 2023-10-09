@@ -62,7 +62,7 @@
                     <vsud-progress
                       color="info"
                       variant="gradient"
-                      percentage="60"
+                      :percentage="testingPercentage"
                     />
                   </div>
                 </div>
@@ -307,6 +307,11 @@ export default {
   /* 호출 컴포넌트 */
   components: {
     VsudProgress,
+  },
+  data() {
+    return {
+      testingPercentage: 43,
+    };
   },
 };
 </script>
