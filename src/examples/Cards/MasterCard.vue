@@ -40,18 +40,28 @@
   </div>
 </template>
 
+<!-- 컴포넌트 및 이미지 호출하고 상위 컴포넌트 선언하는 스크립트 단 -->
 <script>
+/* 컴포넌트 및 이미지 호출 */
 import VsudAvatar from "@/components/VsudAvatar.vue";
 import img from "../../assets/img/curved-images/curved14.jpg";
 import img1 from "../../assets/img/logos/mastercard.png";
 import bgImg from '@/assets/img/curved-images/curved14.jpg';
 
+/* 상위 컴포넌트 정의 */
 export default {
+  /* 고유 name */
   name: "MasterCard",
+  /* 호출 컴포넌트 */
   components: {
     VsudAvatar,
   },
+  /* props 명세 */
   props: {
+    /* [key: String]: {
+      type: Function,
+      default: String
+    } */
     cardHolderText: {
       type: String,
       default: "Card Holder",
@@ -65,6 +75,7 @@ export default {
       default: "Expires",
     },
   },
+  /* data, 함수 형이며 객체 반환하고 키는 현 컴포넌트에서 활용 */
   data() {
     return {
       img,

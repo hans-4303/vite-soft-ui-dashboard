@@ -24,11 +24,20 @@
   </div>
 </template>
 
+<!-- 상위 컴포넌트 정의 스크립트 단 -->
 <script>
 export default {
+  /* 고유 name */
   name: "CardComponent",
+  /* props 명세 */
   props: {
+    /* 객체 아닌 키와 값 선언 */
     directionReverse: Boolean,
+    /* [key: String]: {
+      type: Function;
+      required?: Boolean;
+      default?: 데이터 타입
+    } */
     title: {
       type: String,
       required: true,
@@ -66,6 +75,7 @@ export default {
       default: ""
     },
   },
+  /* data, 함수 형이며 객체 호출되어 키는 컴포넌트 활용 가능 */
   data() {
     return {
       reverseDirection: "flex-row-reverse justify-content-between",
