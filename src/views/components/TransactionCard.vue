@@ -12,7 +12,9 @@
       </div>
     </div>
     <div class="card-body pt-4 p-3">
-      <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Newest</h6>
+      <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">
+        Newest
+      </h6>
       <ul class="list-group">
         <li
           class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
@@ -35,14 +37,16 @@
           </div>
           <div
             class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold"
-          >- $ 2,500</div>
+          >
+            - $ 2,500
+          </div>
         </li>
         <li
           class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
         >
           <div class="d-flex align-items-center">
             <vsud-button
-              color="success"
+              :color="testingColor"
               variant="outline"
               size="sm"
               class="btn-icon-only btn-rounded mb-0 me-3 d-flex align-items-center justify-content-center"
@@ -56,10 +60,14 @@
           </div>
           <div
             class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold"
-          >+ $ 2,000</div>
+          >
+            + $ 2,000
+          </div>
         </li>
       </ul>
-      <h6 class="text-uppercase text-body text-xs font-weight-bolder my-3">Yesterday</h6>
+      <h6 class="text-uppercase text-body text-xs font-weight-bolder my-3">
+        Yesterday
+      </h6>
       <ul class="list-group">
         <li
           class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
@@ -80,7 +88,9 @@
           </div>
           <div
             class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold"
-          >+ $ 750</div>
+          >
+            + $ 750
+          </div>
         </li>
         <li
           class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
@@ -101,7 +111,9 @@
           </div>
           <div
             class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold"
-          >+ $ 1,000</div>
+          >
+            + $ 1,000
+          </div>
         </li>
         <li
           class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
@@ -122,7 +134,9 @@
           </div>
           <div
             class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold"
-          >+ $ 2,500</div>
+          >
+            + $ 2,500
+          </div>
         </li>
         <li
           class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
@@ -141,7 +155,11 @@
               <span class="text-xs">26 March 2020, at 05:00 AM</span>
             </div>
           </div>
-          <div class="d-flex align-items-center text-dark text-sm font-weight-bold">Pending</div>
+          <div
+            class="d-flex align-items-center text-dark text-sm font-weight-bold"
+          >
+            Pending
+          </div>
         </li>
       </ul>
     </div>
@@ -160,6 +178,11 @@ export default {
   /* 호출 컴포넌트 */
   components: {
     VsudButton,
+  },
+  data() {
+    return {
+      testingColor: "info",
+    };
   },
 };
 </script>

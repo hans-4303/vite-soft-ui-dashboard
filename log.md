@@ -184,4 +184,37 @@ required?: boolean;
 
 물론 둘 다 렌더링에 활용할 수 있는데 data()는 컴포넌트 안에서 호출될 내용이고, props라면 부모 컴포넌트가 해당 컴포넌트를 불러올 때 props에 넘기는 경우라 보임, 생각하는 게 맞는지
 
-** data() 혹은 props로 ProjectsTable.vue 조작 가능한지 시험해보기
+data() 혹은 props로 ProjectsTable.vue 조작 가능한지 시험해보기: 성공
+
+처음보는 문법 때문이었음
+
+data() {
+return {
+testingPercentage: 43,
+};
+},
+가 컴포넌트에 정의되었다 하고
+
+하위 컴포넌트는
+<!-- <vsud-progress
+  color="info"
+  variant="gradient"
+  :percentage="testingPercentage"
+/> -->
+이렇게 호출하면 됨
+
+1) 쉽게 얘기한다면
+
+하위 컴포넌트의 prop 앞에 :을 붙여줄 수 있다, 그렇게 하면 해당 prop을 가리키고 실제 전달하고자 하는 데이터나 변수 이름을 넣어줄 수 있다
+
+2) 어렵게 얘기한다면
+
+Vue.js에서 ':'를 사용하면 바인딩된 데이터를 표현할 수 있다, template 단 안에서 데이터를 동적으로 표현할 수 있게 됨
+
+':percentage="testingPercentage"' 문법은 해당 컴포넌트의 props에 값을 전달할 때 사용됨
+
+':percentage': 해당 컴포넌트의 props 중 하나인 percentage에 값을 전달하는 것을 뜻함
+
+'testingPercentage': 이 부분은 실제로 전달하고자 하는 데이터 또는 변수 이름이며 해당 변수에 저장된 값이 percentage prop에 전달됨
+
+즉, ':percentage="testingPercentage"'는 'testingPercentage' 변수 값을 'percentage' prop에 전달하는 것을 나타내며, 이렇게 상위 컴포넌트에서 하위 컴포넌트로 데이터를 전달할 수 있다.
