@@ -227,42 +227,68 @@
     </div>
   </div>
 </template>
+<!-- 컴포넌트 호출 및 선언되는 스크립트 단 -->
 <script>
+/* 컴포넌트 호출 */
 import Chart from "chart.js/auto";
 
+/* 상위 컴포넌트 정의 */
 export default {
+  /* 고유 이름 */
   name: "ActiveUsersChart",
+  /* 마운트 됐을 시 */
   mounted() {
+    /* 캔버스 요소 찾아서 객체로 반환 */
     var ctx = document.getElementById("chart-bars").getContext("2d");
+    /* 차트 인스턴스 만들기, ctx 활용하므로 바로 반환됨 */
     new Chart(ctx, {
+      /* 차트 타입 */
       type: "bar",
+      /* 차트 데이터 */
       data: {
+        /* 라벨 */
         labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        /* 차트 데이터 셋: 배열 속 객체 */
         datasets: [
           {
             label: "Sales",
+            /* 선의 베지어 곡선 장력, 직선 그리려면 0으로 설정
+            단, monotone cubic interpolation이 사용되면 무시된다 */
             tension: 0.4,
             borderWidth: 0,
             borderRadius: 4,
             borderSkipped: false,
             backgroundColor: "#fff",
             data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+            /* 최대 막대 두께 */
             maxBarThickness: 6,
           },
         ],
       },
+      /* 차트 옵션 */
       options: {
+        /* 반응형 */
         responsive: true,
+        /* 캔버스 비율 조절 */
         maintainAspectRatio: false,
+        /* 플러그인 일괄 설정 */
         plugins: {
+          /* 이 중 legend만 명시해서 표시 안함 */
           legend: {
             display: false,
           },
         },
+        /* 상호작용 */
         interaction: {
+          /* intersect:
+          true일 경우 상호 작용 모드는 마우스 위치가 차트 항목과 교차할 때만 적용됨 */
           intersect: false,
+          /* 동일한 인덱스에서 항목을 찾되 intersect에 종속
+          intersect가 참이면 첫 번째 교차 항목이 데이터 인덱스 결정함
+          intersect가 거짓이면 x 축 가장 가까운 항목이 인덱스 결정하는 데 사용됨 */
           mode: "index",
         },
+        /* 축 */
         scales: {
           y: {
             grid: {

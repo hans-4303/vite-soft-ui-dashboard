@@ -88,6 +88,7 @@
       <div class="row">
         <div class="mx-auto mt-1 text-center col-8">
           <p class="mb-0 text-secondary">
+            <!-- 함수 호출, 이 경우 {{ 함수 }} -->
             Copyright © {{ new Date().getFullYear() }} Soft by Creative Tim.
           </p>
         </div>
@@ -96,8 +97,10 @@
   </footer>
 </template>
 
+<!-- 컴포넌트 선언하는 스크립트 단 -->
 <script>
 export default {
+  /* 고유 name */
   name: "AppFooter",
 };
 </script>
