@@ -2,14 +2,18 @@
 //
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+// 테마 변수 모음 파일
+
+// $["지정"]-color
 
 // $soft-background-color: #fbfbfb !default;
 $soft-background-color: #ffffff !default; // Testing
 $font-color:            #67748e !default;
 $h-color:               #344767 !default;
 
-// Color system
+// $["색상]
 
+// Color system
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
@@ -24,6 +28,7 @@ $black:    #000 !default;
 
 // fusv-enable
 
+// $["색상]
 $blue:    #63B3ED !default;
 $indigo:  #596CFF !default;
 $purple:  #6f42c1 !default;
@@ -34,6 +39,10 @@ $yellow:  #FBD38D !default;
 $green:   #81E6D9 !default;
 $teal:    #20c997 !default;
 $cyan:    #0dcaf0 !default;
+
+/* $colors: (
+  color: $["각각 색상](위에 지정됨)
+) */
 
 // scss-docs-start colors-map
 $colors: (
@@ -53,6 +62,7 @@ $colors: (
 ) !default;
 // scss-docs-end colors-map
 
+// $["지정 색상"]
 $primary:       #cb0c9f !default;
 $secondary:     #8392AB !default;
 $info:          #17c1e8 !default;
@@ -62,6 +72,9 @@ $danger:        #ea0606 !default;
 $light:         $gray-200 !default;
 $dark:          $h-color !default;
 
+/* $theme-colors: (
+  color: $["각각 색상](위에 지정됨)
+) */
 // scss-docs-start theme-colors-map
 $theme-colors: (
   "primary":    $primary,
@@ -76,6 +89,7 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors-map
 
+// $["테마 색상]-gradient | gradiend-state
 
 // Gradient colors
 $primary-gradient:            #7928CA !default;
@@ -105,6 +119,10 @@ $light-gradient-state:        #EBEFF4 !default;
 $dark-gradient-dark:          #323a54 !default;
 $dark-gradient-state-dark:    #1a2035 !default;
 
+/* $theme-gradient-colors: (
+  "themeColorName": ($themeColor-gradient, $themeColor-gradient-state)
+) */
+
 // Gradient Colors map
 $theme-gradient-colors: (
   "primary":    ($primary-gradient, $primary-gradient-state),
@@ -118,6 +136,7 @@ $theme-gradient-colors: (
 ) !default;
 
 // Set a specific jump point for requesting color jumps
+// 색상 점프를 요청할 특정 점프 지점 설정
 $theme-color-interval:        8% !default;
 
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.

@@ -5,14 +5,21 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+/* 부트스트랩 모음 파일 */
+ 
 // scss-docs-start import-stack
+
 // Configuration
+
+// 함수 + 변수 + 부트스트랩 통합 + 유틸리티
 @import "functions";
 @import "variables";
 @import "mixins";
 @import "utilities";
 
 // Layout & components
+
+// 레이아웃 및 배치 컴포넌트
 @import "root";
 @import "reboot";
 @import "type";
@@ -46,8 +53,13 @@
 @import "placeholders";
 
 // Helpers
+
+// 각종 CSS 통합
 @import "helpers";
 
 // Utilities
+
+// 중단점 등 여러 기준으로 움직이는 유틸리티
 @import "utilities/api";
+
 // scss-docs-end import-stack

@@ -16,17 +16,27 @@
 
 */
 
+/* 테마 컴포넌트 모음 파일 */
+
 // {{ site.product.name }} components
 
-// Variables
+// Variables: 각종 변수들
+
+// $navbar
 @import "variables/navbar-vertical";
+// $["platform"]
 @import "variables/social-buttons";
+// $breadcrumb
 @import "variables/breadcrumb";
 
-// Mixin
+// Mixin: 각종 CSS 통합
+
+// badge + hover + colored-shadow + social-buttons
 @import "mixins/mixins";
 
 // Core Components - extra styling
+
+// 코어 컴포넌트에 추가 스타일링
 @import "alert";
 @import "avatars";
 @import "badge";
@@ -57,4 +67,6 @@
 @import "typography";
 
 // Plugins
+
+// 플러그인, 각종 CSS 통합
 @import "plugins/free/plugins";
